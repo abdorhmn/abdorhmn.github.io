@@ -2,63 +2,137 @@
 <html lang="en">
 
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Abdelrahman Ahmed - Blog</title>
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-                rel="stylesheet">
-        <!-- our project is using fontawesome -->
-        <link href="../assets/css/fontawesome.css" rel="stylesheet" />
-        <link href="../assets/css/brands.css" rel="stylesheet" />
-        <link href="../assets/css/solid.css" rel="stylesheet" />
-        <link href="../assets/css/sharp-thin.css" rel="stylesheet" />
-        <link href="../assets/css/sharp-duotone-thin.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdelrahman Ahmed - Blog</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="../assets/css/fontawesome.css" rel="stylesheet" />
+    <link href="../assets/css/brands.css" rel="stylesheet" />
+    <link href="../assets/css/solid.css" rel="stylesheet" />
+    <link href="../assets/css/sharp-thin.css" rel="stylesheet" />
+    <link href="../assets/css/sharp-duotone-thin.css" rel="stylesheet" />
+
+    <style>
+        iframe {
+            border-radius: 11px;
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body class="mx-5 bg-[#eff0f0] flex flex-col min-h-[100dvh] m-0">
-        <div class="flex-1">
-                <h1
-                        class="font-[700] font-[Lato] text-[10vw] min-[430px]:text-[47px] text-center tracking-widest mt-12 hover:text-sky-700 focus:text-sky-700 active:text-sky-700">
-                        <a href="../">ABDELRAHMAN</a>
-                </h1>
-                <div class="flex flex-wrap justify-center gap-7 mt-2">
-                        <h2
-                                class="font-[Lato] font-[14px] text-base tracking-wider text-stone-600 hover:text-sky-700 focus:text-sky-700 active:text-sky-700">
-                                <a href="../">ABOUT</a>
-                        </h2>
-                        <h2
-                                class="font-[Lato] font-[14px] text-base tracking-wider text-stone-600 hover:text-sky-700 focus:text-sky-700 active:text-sky-700">
-                                <a href="../Experience">EXPERIENCE</a>
-                        </h2>
-                        <h2
-                                class="font-[Lato] font-[14px] text-base tracking-wider text-stone-600 hover:text-sky-700 focus:text-sky-700 active:text-sky-700">
-                                <a href="../Projects">PROJECTS</a>
-                        </h2>
-                        <h2
-                                class="font-[Lato] font-[14px] text-base tracking-wider text-sky-700">
-                                <a href="./">BLOG</a>
-                        </h2>
-                        <h2
-                                class="font-[Lato] font-[14px] text-base tracking-wider text-stone-600 hover:text-sky-700 focus:text-sky-700 active:text-sky-700">
-                                <a href="../Contact">CONTACT</a>
-                        </h2>
+
+    <div class="flex-1">
+
+        <!-- Header -->
+        <h1
+            class="font-[700] font-[Lato] text-[10vw] min-[430px]:text-[47px] text-center tracking-widest mt-12">
+            <a class="hover:text-sky-700 focus:text-sky-700 active:text-sky-700" href="../">
+                ABDELRAHMAN
+            </a>
+        </h1>
+
+        <!-- Navigation -->
+        <nav class="flex flex-wrap justify-center gap-7 mt-2">
+
+            <h2 class="font-[Lato] text-base tracking-wider text-stone-600">
+                <a class="hover:text-sky-700 focus:text-sky-700 active:text-sky-700" href="../">
+                    ABOUT
+                </a>
+            </h2>
+
+            <h2 class="font-[Lato] text-base tracking-wider text-stone-600">
+                <a class="hover:text-sky-700 focus:text-sky-700 active:text-sky-700"
+                    href="../Experience">
+                    EXPERIENCE
+                </a>
+            </h2>
+
+            <h2 class="font-[Lato] text-base tracking-wider text-stone-600">
+                <a class="hover:text-sky-700 focus:text-sky-700 active:text-sky-700"
+                    href="../Projects">
+                    PROJECTS
+                </a>
+            </h2>
+
+            <h2 class="font-[Lato] text-base tracking-wider text-sky-700">
+                <a href="./">
+                    BLOG
+                </a>
+            </h2>
+
+            <h2 class="font-[Lato] text-base tracking-wider text-stone-600">
+                <a class="hover:text-sky-700 focus:text-sky-700 active:text-sky-700"
+                    href="../Contact">
+                    CONTACT
+                </a>
+            </h2>
+
+        </nav>
+
+        <!-- Blog Grid -->
+        <div class="max-w-[1400px] mx-auto mt-12 mb-16">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+
+                <!-- Post 1 -->
+                <div>
+                    <div class="substack-post-embed">
+                        <p lang="en">Hello Interwebz! by Abdelrahman</p>
+                        <p>wow, this is the start of something.</p>
+                        <a data-post-link href="https://curiabdosity.substack.com/p/hello-interwebz">
+                            Read on Substack
+                        </a>
+                    </div>
                 </div>
 
-                <div class="mt-14">This page is currently under construction, but you can check out my blog on <a class="font-[650] hover:text-sky-700 focus:text-sky-700 active:text-sky-700" href="https://curiabdosity.substack.com/" target="_blank">Substack</a>!</div>
+            </div>
+
         </div>
 
-        <div class="flex justify-center mb-8">
-                <a class="hover:text-sky-700 focus:text-sky-700 active:text-sky-700" href="mailto:abdrhmn@umich.edu"
-                        target="_blank"><i class="fa-solid fa-square-envelope fa-2xl"></i></a>
-                <a class="hover:text-sky-700 focus:text-sky-700 active:text-sky-700"
-                        href="https://www.linkedin.com/in/abdorhmn" target="_blank"><i
-                                class="fa-brands fa-square-linkedin fa-2xl"></i></a>
-                <a class="hover:text-sky-700 focus:text-sky-700 active:text-sky-700" href="https://github.com/abdorhmn"
-            target="_blank"><i class="fa-brands fa-square-github fa-2xl"></i></a>
-        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="flex justify-center gap-5 mb-8">
+
+        <a class="hover:text-sky-700 focus:text-sky-700 active:text-sky-700"
+            href="mailto:abdrhmn@umich.edu"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            <i class="fa-solid fa-square-envelope fa-2xl"></i>
+        </a>
+
+        <a class="hover:text-sky-700 focus:text-sky-700 active:text-sky-700"
+            href="https://www.linkedin.com/in/abdorhmn"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            <i class="fa-brands fa-square-linkedin fa-2xl"></i>
+        </a>
+
+        <a class="hover:text-sky-700 focus:text-sky-700 active:text-sky-700"
+            href="https://github.com/abdorhmn"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            <i class="fa-brands fa-square-github fa-2xl"></i>
+        </a>
+
+    </div>
+
+    <!-- Substack Embed Script -->
+    <script async src="https://substack.com/embedjs/embed.js" charset="utf-8"></script>
+
 </body>
 
 </html>
