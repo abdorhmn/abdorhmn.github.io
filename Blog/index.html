@@ -22,11 +22,15 @@
     <link href="../assets/css/sharp-duotone-thin.css" rel="stylesheet" />
 
     <style>
-        iframe {
-            border-radius: 11px;
-            width: 100%;
-        }
-    </style>
+    iframe {
+        border-radius: 11px;
+        width: 100%;
+    }
+
+    .substack-post-embed iframe {
+        filter: hue-rotate(170deg) saturate(0.7);
+    }
+	</style>
 </head>
 
 <body class="mx-5 bg-[#eff0f0] flex flex-col min-h-[100dvh] m-0">
@@ -79,25 +83,13 @@
 
         </nav>
 
-        <!-- Blog Grid -->
-        <div class="max-w-[1400px] mx-auto mt-12 mb-16">
+       <div class="max-w-[1200px] mx-auto mt-14 mb-20">
+			   <div id="posts-container" class="grid grid-cols-1 lg:grid-cols-2 gapx-12 gap-y-10">
+					   <!-- Posts inserted here -->
+			   </div>
+	   </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-
-                <!-- Post 1 -->
-                <div>
-                    <div class="substack-post-embed">
-                        <p lang="en">Hello Interwebz! by Abdelrahman</p>
-                        <p>wow, this is the start of something.</p>
-                        <a data-post-link href="https://curiabdosity.substack.com/p/hello-interwebz">
-                            Read on Substack
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
+		<iframe src="https://curiabdosity.substack.com/embed" width="480" height="320" style="border: 1px solid #EEE; background: white" frameborder="0" scrolling="no"></iframe>
 
     </div>
 
@@ -131,8 +123,7 @@
     </div>
 
     <!-- Substack Embed Script -->
-    <script async src="https://substack.com/embedjs/embed.js" charset="utf-8"></script>
-
+    <script src="./blog.js"></script>	
 </body>
 
 </html>
