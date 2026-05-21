@@ -52,7 +52,7 @@ async function loadPosts() {
                         <div class="flex-1 min-h-[6rem]">
 
                             <h2 class="
-                                text-3xl
+                                text-2xl
                                 font-bold
                                 mb-2
                                 group-hover:text-sky-700
