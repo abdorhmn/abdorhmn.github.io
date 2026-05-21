@@ -31,7 +31,7 @@ async function loadPosts() {
                    rel="noopener noreferrer"
                    class="group block">
 
-                    <div class="flex gap-5 items-start">
+                    <div class="flex gap-5 items-start mb-4">
 
                         ${post.image ? `
                             <img
@@ -49,26 +49,42 @@ async function loadPosts() {
                             />
                         ` : ''}
 
-                        <div class="flex-1">
+                        <div class="flex-1 min-h-[6rem]">
 
-                            <h2 class="text-3xl font-bold mb-2 group-hover:text-sky-700 transition-colors duration-200">
+                            <h2 class="
+                                text-3xl
+                                font-bold
+                                mb-2
+                                group-hover:text-sky-700
+                                transition-colors
+                                duration-200
+                            ">
                                 ${post.title}
                             </h2>
 
-                            <p class="text-sm text-stone-500 mb-3 tracking-wide">
+                            <p class="
+                                text-sm
+                                text-stone-500
+                                tracking-wide
+                            ">
                                 ${post.date}
                             </p>
 
-                            <p class="text-stone-700 leading-7 text-lg min-h-[3.5em]">
-                                ${post.description}
-                            </p>
-
-                            <div class="mt-4 text-sky-700 font-semibold">
-                                Read Post →
-                            </div>
-
                         </div>
 
+                    </div>
+
+                    <p class="
+                        text-stone-700
+                        leading-7
+                        text-lg
+                        min-h-[3.5em]
+                    ">
+                        ${post.description}
+                    </p>
+
+                    <div class="mt-4 text-sky-700 font-semibold">
+                        Read Post →
                     </div>
 
                 </a>
