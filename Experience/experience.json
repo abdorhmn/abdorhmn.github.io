@@ -1,0 +1,52 @@
+[
+    {
+        "role": "RF & Communications Engineer",
+        "organization": "MRover",
+        "organizationUrl": "https://mrover.org/about",
+        "dates": "September 2024 – Present",
+        "bullets": [
+            "Executed rigorous RF testing to ensure radio systems were competition-ready, analyzing the data using MATLAB",
+            "I am currently leading the design of our custom radio research and development, organzing our subteam's Altium Designer and Ansys HFSS training"
+        ],
+        "projects": [
+            "Custom Radio"
+        ]
+    },
+    {
+        "role": "Tech Consultant & Student Manager",
+        "organization": "Information and Technology Services",
+        "organizationUrl": "https://its.umich.edu",
+        "dates": "May 2024 – Present",
+        "bullets": [
+            "Facilitate on-boarding and supervise 30+ technical consultants to ensure high-quality service and adherence to protocols",
+            "Develop and design internal resources and tools using React to allow consultants to better serve customers with ease",
+			"Provide frontline technical support for the UofM community, resultingnetwork, software, and hardware problems"
+        ],
+        "projects": []
+    },
+    {
+        "role": "System Lead & Electrical/Programming Subsystem Member",
+        "organization": "Team 469 Las Guerrillas",
+        "organizationUrl": "https://469.team",
+        "dates": "2020 – 2024",
+        "bullets": [
+            "Led the design and implementation of the elevator and climber subsytems during the FIRST and OCCRA seasons respectively",
+            "Coordinated integration between mechanical, electrical, and software teams to build reliable automations for the drive team",
+            "Designed schematics integrating sensors and motors, accounting for efficiency and maintenance during competition",
+            "Programmed robust autonomous and tele-operated robot functions in Java to achieve more reliable scoring"
+        ],
+        "projects": []
+    },
+    {
+        "role": "Full Stack Web Developer",
+        "organization": "Tamkeen",
+        "organizationUrl": "https://tamkeen.us",
+        "dates": "2023",
+        "bullets": [
+            "Contributed to website development using .NET.",
+            "Worked with SQL Server databases.",
+            "Implemented and maintained web functionality."
+        ],
+        "projects": []
+    }
+]
