@@ -716,6 +716,14 @@ a.project-visual-link:hover .project-image {
   line-height: 1.7;
 }
 
+.degree-label {
+  margin-right: 6px;
+  color: var(--accent);
+  font: 500 .62rem var(--mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
 .toolkit {
   display: grid;
   gap: 20px;
