@@ -1,0 +1,90 @@
+[
+    {
+    "slug": "smart-sustainability-bat-box",
+    "title": "Smart Sustainability Bat Box",
+    "date": "Oct 2026",
+    "description": "Built a sensor-equipped bat box with on-device computer vision on an Arduino UNO Q that detects bats at ~100 fps, streaming data to a live dashboard with maintenance advice.",
+    "longDescription": [
+      "Built a sensor-equipped bat box with on-device computer vision to detect bats on an Arduino UNO Q at ~100 fps, created at MHacks 2026.",
+      "Fine-tuned the BatNet model in PyTorch on 10,000+ daylight photos, cutting false alarms from 42% to 13% at 70% recall.",
+      "Streamed sensor data over Wi-Fi to Firebase and built a website that pulls it into a dashboard with maintenance advice."
+    ],
+    "tags": ["Arduino UNO Q", "PyTorch", "Firebase", "Computer vision"],
+    "image": "/assets/images/batbox.jpeg",
+    "imageAlt": "Smart Sustainability Bat Box project",
+    "placeholderFile": "bat-box.jpg",
+    "featured": true,
+    "gallery": [
+      { "src": "", "alt": "Bat box with sensors and Arduino UNO Q", "placeholderFile": "bat-box-1.jpg" },
+      { "src": "", "alt": "On-device bat detection output", "placeholderFile": "bat-box-2.jpg" },
+      { "src": "", "alt": "Bat box dashboard website", "placeholderFile": "bat-box-3.jpg" }
+    ],
+    "links": []
+  },
+  {
+    "slug": "bluetooth-antenna",
+    "title": "Bluetooth Antenna",
+    "date": "May 2026",
+    "description": "Designed and simulated a compact 2.4-2.5 GHz antenna in Ansys HFSS to transmit plant-moisture data, iterating on the board geometry to minimize reflection and improve efficiency.",
+    "longDescription": [
+      "Designed and simulated a compact 2.4-2.5 GHz antenna in Ansys HFSS to transmit plant-moisture data, iterating on the board geometry to minimize reflection and improve efficiency.",
+      "Replace this paragraph with more detail: how you chose the antenna topology, what the design constraints were (board size, enclosure, cost), and what tools you used to validate performance (VNA measurements, HFSS sweeps, etc.)."
+    ],
+    "tags": ["Ansys HFSS", "RF design", "Simulation"],
+    "image": "./assets/images/bluetooth-antenna.png",
+    "imageAlt": "Bluetooth antenna project",
+    "placeholderFile": "bluetooth-antenna.jpg",
+    "visualStyle": "antenna",
+    "featured": false,
+    "gallery": [
+      { "src": "", "alt": "Bluetooth antenna board, top view", "placeholderFile": "bluetooth-antenna-1.jpg" },
+      { "src": "", "alt": "HFSS simulation of return loss", "placeholderFile": "bluetooth-antenna-2.jpg" },
+      { "src": "", "alt": "Antenna under VNA test", "placeholderFile": "bluetooth-antenna-3.jpg" }
+    ],
+    "links": []
+  },
+  {
+    "slug": "synth-synthesis",
+    "title": "Synth Synthesis",
+    "date": "Jan 2025 — Apr 2026",
+    "description": "Spearheaded a microprocessor-based synthesizer in Verilog with a custom assembly language, device drivers, waveform modulation and display logic.",
+    "longDescription": [
+      "Spearheaded a microprocessor-based synthesizer in Verilog with a custom assembly language, device drivers, waveform modulation and display logic.",
+      "Replace this paragraph with more detail: the instruction set you designed, how the waveform generation pipeline works, and what the biggest debugging challenge was on real hardware."
+    ],
+    "tags": ["FPGA", "Verilog", "Assembly", "Quartus"],
+    "image": "/assets/images/synth-synthesis.png",
+    "imageAlt": "Synth Synthesis project",
+    "placeholderFile": "synth-synthesis.jpg",
+    "visualStyle": "synth",
+    "featured": false,
+    "gallery": [
+      { "src": "", "alt": "FPGA dev board running the synthesizer", "placeholderFile": "synth-synthesis-1.jpg" },
+      { "src": "", "alt": "Waveform output on oscilloscope", "placeholderFile": "synth-synthesis-2.jpg" },
+      { "src": "", "alt": "Custom assembly language listing", "placeholderFile": "synth-synthesis-3.jpg" }
+    ],
+    "links": []
+  },
+  {
+    "slug": "digital-scouting-system",
+    "title": "Digital Scouting System",
+    "date": "Dec 2023 — Jan 2024",
+    "description": "Led an offline-capable, multi-device scouting platform with a custom backend and QR-based data transfer for reliable use in network-free competition environments.",
+    "longDescription": [
+      "Led an offline-capable, multi-device scouting platform with a custom backend and QR-based data transfer for reliable use in network-free competition environments.",
+      "Replace this paragraph with more detail: how many devices/users the system supported, how the QR-based sync protocol worked, and what happened when it was used in competition."
+    ],
+    "tags": ["JavaScript", "ASP.NET Core", "C#", "Offline-first"],
+    "image": "",
+    "imageAlt": "Digital scouting system screenshot",
+    "placeholderFile": "digital-scouting.jpg",
+    "visualStyle": "scouting",
+    "featured": false,
+    "gallery": [
+      { "src": "", "alt": "Scouting app data entry screen", "placeholderFile": "digital-scouting-1.jpg" },
+      { "src": "", "alt": "QR code sync in progress", "placeholderFile": "digital-scouting-2.jpg" },
+      { "src": "", "alt": "Match data dashboard", "placeholderFile": "digital-scouting-3.jpg" }
+    ],
+    "links": []
+  }
+]

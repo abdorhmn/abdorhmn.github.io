@@ -1,82 +1,166 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdelrahman Ahmed</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-        rel="stylesheet">
-    <!-- our project is using fontawesome -->
-    <link href="./assets/css/fontawesome.css" rel="stylesheet" />
-    <link href="./assets/css/brands.css" rel="stylesheet" />
-    <link href="./assets/css/solid.css" rel="stylesheet" />
-    <link href="./assets/css/sharp-thin.css" rel="stylesheet" />
-    <link href="./assets/css/sharp-duotone-thin.css" rel="stylesheet" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="Abdelrahman Ahmed is an electrical engineering student building RF, embedded, and electromechanical systems.">
+  <meta name="theme-color" content="#f3f0e8">
+  <title>Abdelrahman Ahmed</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 
-<body class="mx-5 bg-[#eff0f0] flex flex-col min-h-[100dvh] m-0">
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <div class="flex-1">
-        <h1 class="font-[700] font-[Lato] text-[10vw] min-[430px]:text-[47px] text-center tracking-widest mt-8"><a
-                class="hover:text-sky-700 focus:text-sky-700 active:text-sky-700" href="./">ABDELRAHMAN</a></h1>
-        <div class="flex flex-wrap justify-center gap-7 mt-2">
-            <h2 class="font-[Lato] font-[14px] text-base tracking-wider text-stone-600"><a
-                    class="text-sky-700" href="./">ABOUT</a></h2>
-            <h2 class="font-[Lato] font-[14px] text-base tracking-wider text-stone-600"><a
-                    class="hover:text-sky-700 focus:text-sky-700 active:text-sky-700" href="./Experience">EXPERIENCE</a>
-            </h2>
-            <h2 class="font-[Lato] font-[14px] text-base tracking-wider text-stone-600"><a
-                    class="hover:text-sky-700 focus:text-sky-700 active:text-sky-700" href="./Projects">PROJECTS</a>
-            </h2>
-            <h2 class="font-[Lato] font-[14px] text-base tracking-wider text-stone-600"><a
-                    class="hover:text-sky-700 focus:text-sky-700 active:text-sky-700" href="./Blog/">BLOG</a></h2>
-            <h2 class="font-[Lato] font-[14px] text-base tracking-wider text-stone-600"><a
-                    class="hover:text-sky-700 focus:text-sky-700 active:text-sky-700" href="./Contact/">CONTACT</a></h2>
+  <div class="site-shell">
+    <aside class="sidebar">
+      <div class="identity">
+        <a class="portrait-wrap" href="#about" aria-label="Go to About">
+          <img class="portrait" src="assets/images/abdelrahman.jpg" alt="Abdelrahman Ahmed outdoors in winter">
+        </a>
+        <p class="eyebrow">Hello, I'm</p>
+        <a class="name" href="#about">Abdelrahman <br>Ahmed</a>
+        <p class="tagline">Electrical engineering student.</p>
+        <p class="location"><span aria-hidden="true"></span> Ann Arbor, Michigan</p>
+      </div>
+
+      <nav aria-label="Primary navigation">
+        <a href="#about"><span>01</span>About</a>
+        <a href="#experience"><span>02</span>Experience</a>
+        <a href="#projects"><span>03</span>Projects</a>
+        <a href="#education"><span>04</span>Education</a>
+        <a href="#writing"><span>05</span>Blog</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="social-links">
+          <a href="mailto:abdrhmn@umich.edu" aria-label="Email Abdelrahman">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            Email
+          </a>
+          <a href="https://www.linkedin.com/in/abdorhmn/" target="_blank" rel="noopener"
+            aria-label="Abdelrahman on LinkedIn">
+            <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+            LinkedIn
+          </a>
+          <a href="https://github.com/abdorhmn" target="_blank" rel="noopener" aria-label="Abdelrahman on GitHub">
+            <i class="fa-brands fa-github" aria-hidden="true"></i>
+            GitHub
+          </a>
+        </div>
+        <button class="theme-toggle" type="button" aria-label="Switch color theme">
+          <span class="theme-icon" aria-hidden="true">◐</span>
+          <span class="theme-label">Theme</span>
+        </button>
+      </div>
+    </aside>
+
+    <main id="main">
+      <section class="hero section" id="about">
+        <p class="section-kicker">About</p>
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>I'm an undergraduate at the <a href="https://umich.edu" target="_blank" rel="noopener">University of
+                Michigan</a> studying electrical engineering. My interests are in embedded systems and RF and wireless communications, and I love learning and solving problems creatively through engineering. I also have a <a
+                href="assets/Abdelrahman-Ahmed-Resume.pdf" target="_blank" rel="noopener">résumé</a> :)</p>
+            </p>
+            <p>Right now, I build the radio and communications system for <a href="https://mrover.org/about"
+                target="_blank" rel="noopener">Michigan Mars Rover</a> and work as a Student Manager and Tech Help
+              Consultant with <a href="https://its.umich.edu" target="_blank" rel="noopener">Information and Technology
+                Services</a>. Before
+              college, I led, built, and designed electrical and mechanical systems with FRC <a href="https://469.team"
+                target="_blank" rel="noopener">Team 469 Las Guerrillas</a> and contributed to the non-profit <a
+                href="https://tamkeen.us" target="_blank" rel="noopener">Tamkeen</a>'s website using .NET and SQL
+              Server.</p>
+            <p>In my free time, I like exploring nature, competing in <a href="https://tbvf.itch.io" target="_blank"
+                rel="noopener">game jams</a>, and running the educational YouTube channel <a
+                href="https://www.youtube.com/@LearningComically" target="_blank" rel="noopener">Learning Comically</a>.
+              I'm
+              also president of our <a href="https://www.instagram.com/michigan_blacksmithing_club/" target="_blank"
+                rel="noopener">Blacksmithing Club</a>. I like herbal teas, fun facts, and snowy days.</p>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects">See the projects I've built <i class="fa-solid fa-arrow-down"
+              aria-hidden="true"></i></a>
+          <a class="button" href="resume.pdf" target="_blank">I also have a résumé :) <i
+              class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+        </div>
+      </section>
+
+      <section class="section" id="experience">
+        <div class="section-heading">
+          <p class="section-kicker">Experience</p>
         </div>
 
-        <div class="flex max-[830px]:flex-wrap justify-center mb-15">
-            <div class="min-[830px]:shrink-0 w-[380px] max-h-[507px] flex justify-end mx-5 mt-10">
-                <img class="rounded-lg" src="./files/IMG_9899.jpg" alt="Headshot of Abdelrahman" />
-            </div>
-            <div class="max-w-[380px] mx-5 mt-10 text-wrap text-mist-700 grow-0">
-                <h1 class="font-[650] text-black text-2xl mb-4">Hello, I'm Abdelrahman!</h1>
-                <p class="mb-4">I'm an undergraduate student at the <a
-                        class="font-[650] text-black hover:text-sky-700 focus:text-sky-700 active:text-sky-700"
-                        href="https://umich.edu" target="_blank">University of Michigan</a> studying Electrical
-                    Engineering. I am passionate about learning and creative problem solving through engineering.</p>
-                <p class="mb-4">Currently, I work on the Radio Frequency and Communications system for <a
-                        class="font-[650] text-black hover:text-sky-700 focus:text-sky-700 active:text-sky-700"
-                        href="https://mrover.org/about" target="_blank">MRover</a> and I'm a Tech Consultant and Student Manager supporting
-                    the needs of the University community for <a
-                        class="font-[650] text-black hover:text-sky-700 focus:text-sky-700 active:text-sky-700"
-                        href="https://its.umich.edu" target="_blank">Information and Technology Services</a>.</p>
-                <p class="mb-4">I've led, built, and designed electrical and mechanical systems as a part of FRC <a
-                        class="font-[650] text-black hover:text-sky-700 focus:text-sky-700 active:text-sky-700"
-                        href="https://469.team" target="_blank">Team #469 Las Guerrillas</a> and contributed to the
-                    non-profit <a class="font-[650] text-black hover:text-sky-700 focus:text-sky-700 active:text-sky-700"
-                        href="https://tamkeen.us" target="_blank">Tamkeen</a>'s website using .NET and SQL Server.</p>
-                <p>In my personal time I enjoy exploring nature, competing in <a
-                        class="font-[650] text-black hover:text-sky-700 focus:text-sky-700 active:text-sky-700"
-                        href="https://tbvf.itch.io" target="_blank">Game Jams</a>, and running the educational Youtube
-                    channel <a class="font-[650] text-black hover:text-sky-700 focus:text-sky-700 active:text-sky-700"
-							   href="https://www.youtube.com/@LearningComically" target="_blank">Learning Comically</a>. At university, I am one of our <a class="font-[650] text-black hover:text-sky-700 focus:text-sky-700 active:text-sky-700" href="https://www.instagram.com/michigan_blacksmithing_club/" target="_blank">Blacksmithing Club</a>'s copresidents. I like herbal teas, fun facts, and snowy days.</p>
-            </div>
-        </div>
-    </div>
+        <div class="timeline" id="experience-list" aria-live="polite"></div>
+      </section>
 
-    <div class="flex justify-center mb-8">
-        <a class="hover:text-sky-700 focus:text-sky-700 active:text-sky-700" href="mailto:abdrhmn@umich.edu"
-            target="_blank"><i class="fa-solid fa-square-envelope fa-2xl"></i></a>
-        <a class="hover:text-sky-700 focus:text-sky-700 active:text-sky-700" href="https://www.linkedin.com/in/abdorhmn"
-            target="_blank"><i class="fa-brands fa-square-linkedin fa-2xl"></i></a>
-        <a class="hover:text-sky-700 focus:text-sky-700 active:text-sky-700" href="https://github.com/abdorhmn"
-            target="_blank"><i class="fa-brands fa-square-github fa-2xl"></i></a>
-    </div>
+      <section class="section projects-section" id="projects">
+        <div class="section-heading">
+          <p class="section-kicker">My projects</p>
+          <p class="section-note">Things I've designed and built</p>
+        </div>
+
+        <div class="projects-grid" id="projects-list" aria-live="polite"></div>
+        <!-- <div class="project-links"><a href="projects/">See all projects <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div> -->
+      </section>
+
+      <section class="section" id="education">
+        <div class="section-heading">
+          <p class="section-kicker">Education &amp; Technical Skills</p>
+          <p class="section-note">The useful details</p>
+        </div>
+        <div class="education-grid">
+          <div class="degree">
+            <p class="degree-year">2025 — 2029</p>
+            <h2>University of Michigan</h2>
+            <p>B.S.E. Electrical Engineering</p>
+            <p class="muted">Data Structures &amp; Algorithms, Circuits &amp; Linear Systems, Engineering
+              Electromagnetics, and Microprocessors.</p>
+          </div>
+          <div class="toolkit">
+            <div>
+              <h3>Tools</h3>
+              <p>Ansys HFSS, Altium, FPGA, Arduino, OnShape/SolidWorks, VNA, Linux, Git, React, Pandas, PyTorch</p>
+            </div>
+            <div>
+              <h3>Languages</h3>
+              <p>C++, C, Java, Verilog, Python, Assembly, Matlab, SQL, JavaScript, HTML/CSS, C#/.NET, GDScript</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section writing-section" id="writing">
+        <div class="section-heading">
+          <p class="section-kicker">Writing</p>
+          <a class="section-note section-link" href="https://curiabdosity.substack.com" target="_blank"
+            rel="noopener">Checkout my substack blog! <i class="fa-solid fa-arrow-up-right-from-square"
+              aria-hidden="true"></i></a>
+        </div>
+        <div class="writing-list" id="writing-list" aria-live="polite"></div>
+      </section>
+
+      <footer>
+        <p>Have a project, question, or especially good fun fact? <a href="mailto:abdrhmn@umich.edu">Contact me!</a></p>
+        <span class="webring">
+          <a href="https://michigan-webring.vercel.app/" target="_blank" rel="noopener" aria-label="Michigan Web Ring">
+            <span class="webring-logo" aria-hidden="true"></span>
+          </a>
+        </span>
+      </footer>
+    </main>
+  </div>
 </body>
 
 </html>

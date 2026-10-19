@@ -1,0 +1,51 @@
+[
+  {
+    "role": "RF & Communications Engineer",
+    "organization": "Michigan Mars Rover Team",
+    "organizationUrl": "https://mrover.org/about",
+    "dates": "Aug 2025 — Now",
+    "location": "Ann Arbor, MI",
+    "description": [
+      "Executed rigorous RF testing to ensure radio systems were competition-ready, analyzing data using MATLAB.",
+      "Leading the design of our custom radio construction R&D and organizing Altium Designer and Ansys HFSS training."
+    ],
+    "tags": ["RF systems", "MATLAB", "Altium", "HFSS"]
+  },
+  {
+    "role": "Student Manager & Tech Help Consultant",
+    "organization": "U-M Information and Technology Services",
+    "organizationUrl": "https://its.umich.edu",
+    "dates": "Aug 2025 — Now",
+    "location": "Ann Arbor, MI",
+    "description": [
+      "Facilitate on-boarding and supervise 30+ tech consultants to ensure high-quality service and adherence to protocols.",
+      "Develop and design internal resources and tools using React to allow consultants to better serve customers with ease.",
+      "Provide frontline technical support for the UofM community, resolving networking, software, and hardware problems."
+    ],
+    "tags": ["Leadership", "React", "Technical support"]
+  },
+  {
+    "role": "System Lead · Electrical & Programming",
+    "organization": "FRC Team 469, Las Guerrillas",
+    "organizationUrl": "https://469.team",
+    "dates": "Aug 2021 — May 2025",
+    "location": "Pontiac, MI",
+    "description": [
+      "Led the design and implementation of the elevator and climber subsystems during the FIRST and OCCRA seasons, coordinating integration between mechanical, electrical, and software teams to build reliable automations for drivers.",
+      "Designed schematics integrating sensors and motors, accounting for efficiency and maintenance during competition, and programmed robust autonomous and tele-operated robot functions in Java for more reliable scoring."
+    ],
+    "tags": ["Java", "Robotics", "Electrical design", "CAD"]
+  },
+  {
+    "role": "Engineering Trainee",
+    "organization": "DENSO International America",
+    "organizationUrl": "https://www.denso.com",
+    "dates": "Aug 2024",
+    "location": "Southfield, MI",
+    "description": [
+      "Built a 360° RF Test Analyzer, automating the processing of 360° anechoic chamber VNA data in Python, organized by frequency and angle.",
+      "Created a GUI that generates polar plots at each of 1601+ measured frequencies to inform engineering decisions."
+    ],
+    "tags": ["VNA", "Python", "Pandas", "NumPy", "Data visualization"]
+  }
+]
