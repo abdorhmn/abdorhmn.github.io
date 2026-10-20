@@ -1,5 +1,5 @@
 // Renders markdown/<name>.md into markdown.html and builds the sidebar
-// navigation from its headings (h1 = 01, h2 = a, h3 = i).
+// navigation from its headings (h2 = 01, h3 = a, h4 = i).
 // The markdown file is chosen by this page's own file name:
 //   /baking/applecrumblebars.html loads <data-md-folder>/applecrumblebars.md
 // (set data-md-folder on <body>; ?file=Name overrides the name for testing).
@@ -38,13 +38,14 @@ function slugify(text) {
 
 // Gives each heading an id and adds a numbered link for it to the sidebar.
 function buildNav() {
-  const headings = [...content.querySelectorAll('h1, h2, h3')];
+  const headings = [...content.querySelectorAll('h2, h3, h4')];
   const used = new Set();
   const counts = [0, 0, 0];
   const entries = [];
 
   headings.forEach((heading) => {
-    const level = Number(heading.tagName[1]);
+    const tag = Number(heading.tagName[1]);
+    const level = tag - 1;
     counts[level - 1] += 1;
     for (let i = level; i < 3; i += 1) counts[i] = 0;
 
@@ -58,7 +59,7 @@ function buildNav() {
 
     const link = document.createElement('a');
     link.href = `#${id}`;
-    link.className = `nav-h${level}`;
+    link.className = `nav-h${tag}`;
     const number = document.createElement('span');
     number.textContent = label;
     link.append(number, heading.textContent);

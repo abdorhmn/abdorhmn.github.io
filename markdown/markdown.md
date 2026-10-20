@@ -4,17 +4,22 @@ This is a template markdown file for the markdown viewer. Copy it, delete what y
 
 ## Headings
 
-The sidebar is built from your headings: `#` is numbered (01, 02), `##` is lettered (a, b, c), and `###` is roman (i, ii, iii). Use one `#` for the page title.
+The sidebar is built from your headings: `##` is numbered (01, 02), `###` is lettered (a, b, c), and `####` is roman (i, ii, iii). Use one `#` for the page title.
 
 ```
 # Page title
 ## Section
 ### Subsection
+#### SubSubsection
 ```
 
 ### A subsection
 
-This is a `###` heading. It restarts at i under every `##` section.
+This is a `###` heading. It restarts at a under every `##` section.
+
+#### A subsubsection
+
+This is a `####` heading. It restarts at i under every `###` section.
 
 ## Text
 
