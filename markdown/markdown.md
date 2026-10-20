@@ -25,6 +25,25 @@ This is a `###` heading. It restarts at i under every `##` section.
 
 **Bold**, *italic*, ~~strikethrough~~, and `inline code`. Here is [a link](https://umich.edu) that opens in a new tab, and [one to my home page](/index.html) that doesn't.
 
+## Footnotes
+
+Highlight any text and attach a note to it. On wide screens, hovering the highlight previews the note in the bottom-right corner, clicking it keeps the note open until you scroll, and clicking the number jumps to the note at the bottom of the page. On small screens, tapping the highlight opens the note inline, and tapping again closes it.
+
+```
+We visited Salem in the ==peak of October==[^peak] and took the ==T==[^t] there.
+A bare number works too, with nothing highlighted.[^bare]
+
+[^peak]: Peak here meaning both for **Salem** and midterms.
+[^t]: Short for the *MBTA*, Boston's [subway system](https://www.mbta.com).
+[^bare]: Notes can use `code`, **bold**, *italic*, and links.
+```
+
+We visited Salem in the ==peak of October==[^peak] and took the ==T==[^t] there. A bare number works too, with nothing highlighted.[^bare]
+
+[^peak]: Peak here meaning both for **Salem** and midterms.
+[^t]: Short for the *MBTA*, Boston's [subway system](https://www.mbta.com).
+[^bare]: Notes can use `code`, **bold**, *italic*, and links.
+
 ## Lists
 
 ### Bulleted

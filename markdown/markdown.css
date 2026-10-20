@@ -235,3 +235,174 @@ nav a.nav-h3 span {
     padding-left: 8px;
   }
 }
+
+/* Footnotes: ==highlighted text==[^id] with a matching [^id]: note */
+.md-content .fn {
+  padding: 0 2px;
+  border-radius: 2px;
+  background: var(--accent-soft);
+  color: var(--ink);
+  cursor: pointer;
+  scroll-margin-top: 100px;
+  transition: background-color .15s;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.md-content .fn:hover,
+.md-content .fn.active {
+  background: color-mix(in srgb, var(--accent) 26%, transparent);
+}
+
+.md-content .fn-num {
+  position: relative;
+  top: -.5em;
+  margin-left: 3px;
+  color: var(--accent);
+  font: 500 .6rem/1 var(--mono);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.md-content .fn-num:hover {
+  color: var(--ink);
+}
+
+.md-content .fn-num:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Note shown on hover (wide screens), pinned to the bottom-right corner */
+.fn-tooltip {
+  position: fixed;
+  z-index: 30;
+  right: 24px;
+  bottom: 24px;
+  width: min(340px, calc(100vw - 48px));
+  padding: 14px 16px 15px;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--ink);
+  font: 400 .84rem/1.6 var(--sans);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  pointer-events: none;
+  transition: opacity .15s, transform .15s, visibility .15s;
+}
+
+.fn-tooltip.show {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.fn-tooltip.pinned {
+  pointer-events: auto;
+}
+
+.fn-tooltip-num {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--accent);
+  font: 500 .62rem/1.3 var(--mono);
+}
+
+.fn-tooltip a {
+  color: var(--ink);
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
+}
+
+.fn-tooltip a:hover {
+  color: var(--accent);
+}
+
+.fn-tooltip code {
+  padding: 1px 4px;
+  border-radius: 2px;
+  background: var(--accent-soft);
+  font: 400 .85em var(--mono);
+}
+
+/* Note opened inline (small screens) */
+.fn-inline {
+  display: none;
+}
+
+/* Footnote list at the bottom of the page */
+.fn-list-wrap {
+  margin-top: 56px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+
+.fn-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: .92rem;
+  line-height: 1.65;
+}
+
+.fn-list li {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  margin: 0 0 8px;
+  padding: 0;
+  scroll-margin-top: 100px;
+}
+
+.fn-list-num {
+  padding-top: .3em;
+  color: var(--accent);
+  font: 500 .62rem/1.5 var(--mono);
+}
+
+.fn-list li:target .fn-content {
+  background: var(--accent-soft);
+}
+
+.md-content .fn-back {
+  margin-left: 2px;
+  color: var(--accent);
+  font-size: .72em;
+  text-decoration: none;
+}
+
+.md-content .fn-back:hover {
+  color: var(--ink);
+}
+
+@media (max-width: 700px) {
+  .fn-tooltip {
+    display: none;
+  }
+
+  .fn-inline.open {
+    display: inline;
+    margin-left: 4px;
+    padding: 1px 3px;
+    border-radius: 2px;
+    background: var(--accent-soft);
+    color: var(--ink);
+    font-size: .94em;
+  }
+
+  .fn-inline.open::before {
+    content: "[";
+    color: var(--accent);
+  }
+
+  .fn-inline.open::after {
+    content: "]";
+    color: var(--accent);
+  }
+
+  .fn-inline.open a {
+    color: var(--ink);
+  }
+}
