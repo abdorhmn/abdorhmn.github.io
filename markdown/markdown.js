@@ -215,10 +215,7 @@ function buildFootnotes() {
     back.className = 'fn-back';
     back.href = `#fnref-${id}`;
     back.setAttribute('aria-label', 'Back to text');
-    const arrow = document.createElement('i');
-    arrow.className = 'fa-solid fa-arrow-up';
-    arrow.setAttribute('aria-hidden', 'true');
-    back.append(arrow);
+    back.append(makeIcon('arrow-up'));
 
     body.append(text, ' ', back);
     item.append(number, body);
@@ -277,19 +274,14 @@ function initFootnotes() {
     ref.classList.toggle('active', note.classList.toggle('open'));
   }
 
+  // Hover/focus only preview the note on wide screens, and not while one is pinned.
+  const preview = (action) => () => {
+    if (!narrow.matches && !pinned) action();
+  };
+
   refs.forEach((ref) => {
-    ref.addEventListener('mouseenter', () => {
-      if (!narrow.matches && !pinned) show(ref);
-    });
-    ref.addEventListener('mouseleave', () => {
-      if (!narrow.matches && !pinned) hide();
-    });
-    ref.addEventListener('focusin', () => {
-      if (!narrow.matches && !pinned) show(ref);
-    });
-    ref.addEventListener('focusout', () => {
-      if (!narrow.matches && !pinned) hide();
-    });
+    ['mouseenter', 'focusin'].forEach((type) => ref.addEventListener(type, preview(() => show(ref))));
+    ['mouseleave', 'focusout'].forEach((type) => ref.addEventListener(type, preview(hide)));
     ref.addEventListener('click', (event) => {
       // Ordinary links inside the highlighted text keep working.
       const link = event.target.closest('a');
@@ -333,6 +325,215 @@ function initFootnotes() {
   });
 }
 
+// A <figure> holding an image (or any wrapper) with a caption underneath.
+// caption: text, '' to leave an empty line (keeps carousel slides aligned), null for no caption.
+function makeFigure(media, caption) {
+  const figure = document.createElement('figure');
+  figure.className = 'md-figure';
+  figure.append(media);
+  if (caption !== null) {
+    const text = document.createElement('figcaption');
+    text.className = 'md-caption';
+    text.textContent = caption || '\u00a0';
+    figure.append(text);
+  }
+  return figure;
+}
+
+// An image's "caption" (the quoted text after its path) is its title attribute.
+// Taking it out also stops the browser's duplicate hover tooltip.
+function takeCaption(img) {
+  const caption = img.title;
+  img.removeAttribute('title');
+  return caption;
+}
+
+// Standalone images with a caption get a centered caption underneath.
+function buildFigures() {
+  content.querySelectorAll('p > img[title]').forEach((img) => {
+    const paragraph = img.parentElement;
+    // Only when the image is the only thing in its paragraph.
+    if (paragraph.children.length !== 1 || paragraph.textContent.trim()) return;
+    paragraph.replaceWith(makeFigure(img, takeCaption(img)));
+  });
+}
+
+// Image carousels: a ```carousel code block with one image per line, written
+// exactly like a normal image:
+//   ![alt text](image.jpg "Optional caption")
+function buildCarousels() {
+  const MAX_HEIGHT = 520;
+
+  content.querySelectorAll('pre > code.language-carousel').forEach((code) => {
+    // Parse the block as ordinary markdown, so images and captions work the same everywhere.
+    const parsed = document.createElement('div');
+    parsed.innerHTML = marked.parse(code.textContent);
+    const images = [...parsed.querySelectorAll('img')];
+    if (!images.length) return;
+    const captions = images.map(takeCaption);
+    const hasCaptions = captions.some(Boolean);
+
+    const carousel = document.createElement('div');
+    carousel.className = 'carousel';
+    carousel.setAttribute('role', 'group');
+    carousel.setAttribute('aria-roledescription', 'carousel');
+    carousel.setAttribute('aria-label', 'Image carousel');
+
+    const stage = document.createElement('div');
+    stage.className = 'carousel-stage';
+    const track = document.createElement('div');
+    track.className = 'carousel-track';
+
+    // Each slide is a figure holding its image and caption, so they move together.
+    const items = images.map((img, i) => {
+      const media = document.createElement('div');
+      media.className = 'carousel-media';
+      media.append(img);
+      img.addEventListener('load', measure);
+      const slide = makeFigure(media, hasCaptions ? captions[i] : null);
+      slide.classList.add('carousel-slide');
+      track.append(slide);
+      return slide;
+    });
+
+    // Copies of the last and first slides on either end make the loop seamless.
+    const loop = items.length > 1;
+    if (loop) {
+      const lead = items[items.length - 1].cloneNode(true);
+      const tail = items[0].cloneNode(true);
+      [lead, tail].forEach((clone) => {
+        clone.setAttribute('aria-hidden', 'true');
+        clone.querySelector('img').alt = '';
+      });
+      track.prepend(lead);
+      track.append(tail);
+    }
+    stage.append(track);
+    carousel.append(stage);
+
+    // Every image is scaled to the height of the tallest one (up to MAX_HEIGHT),
+    // and every caption gets the height of the longest one, so slides line up.
+    function measure() {
+      const width = stage.clientWidth;
+      if (!width) return;
+      let tallest = 0;
+      track.querySelectorAll('img').forEach((img) => {
+        if (!img.naturalWidth) return;
+        const height = img.naturalHeight * Math.min(1, width / img.naturalWidth);
+        tallest = Math.max(tallest, Math.min(height, MAX_HEIGHT));
+      });
+      if (tallest) carousel.style.setProperty('--carousel-h', `${Math.round(tallest)}px`);
+
+      if (hasCaptions) {
+        carousel.style.setProperty('--caption-h', '0px');
+        const longest = Math.max(...items.map((slide) => slide.querySelector('.md-caption').offsetHeight));
+        carousel.style.setProperty('--caption-h', `${longest}px`);
+      }
+    }
+
+    let lastWidth = 0;
+    new ResizeObserver(() => {
+      if (stage.clientWidth === lastWidth) return;
+      lastWidth = stage.clientWidth;
+      measure();
+    }).observe(stage);
+    if (document.fonts) document.fonts.ready.then(measure);
+
+    let current = 0;              // which real image is showing
+    let position = loop ? 1 : 0;  // where that is on the track (copies included)
+    let moving = false;
+    let timer;
+
+    function update() {
+      items.forEach((slide, i) => slide.setAttribute('aria-hidden', String(i !== current)));
+    }
+
+    function place(animate) {
+      track.style.transition = animate ? '' : 'none';
+      track.style.transform = `translateX(-${position * 100}%)`;
+      if (!animate) {
+        track.getBoundingClientRect(); // apply the jump before turning the animation back on
+        track.style.transition = '';
+      }
+    }
+
+    // After sliding onto a copy, jump back to the matching real image.
+    function settle() {
+      clearTimeout(timer);
+      if (!moving) return;
+      moving = false;
+      if (position === 0) {
+        position = items.length;
+        place(false);
+      } else if (position === items.length + 1) {
+        position = 1;
+        place(false);
+      }
+    }
+    track.addEventListener('transitionend', (event) => {
+      if (event.target === track) settle();
+    });
+
+    function go(step) {
+      if (moving) return;
+      current = (current + step + items.length) % items.length;
+      position += step;
+      moving = true;
+      place(true);
+      // Backup in case the transition event doesn't fire (e.g. reduced motion).
+      if (parseFloat(getComputedStyle(track).transitionDuration) === 0) settle();
+      else timer = setTimeout(settle, 700);
+      update();
+    }
+
+    place(false);
+    update();
+
+    if (loop) {
+      const controls = document.createElement('div');
+      controls.className = 'carousel-controls';
+      [['Previous image', 'arrow-left-long', -1], ['Next image', 'arrow-right-long', 1]].forEach(([label, icon, step]) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'carousel-btn';
+        button.setAttribute('aria-label', label);
+        button.append(makeIcon(icon));
+        button.addEventListener('click', () => go(step));
+        controls.append(button);
+      });
+      carousel.append(controls);
+
+      // Swipe left/right on touch screens.
+      let startX = null;
+      stage.addEventListener('touchstart', (event) => { startX = event.touches[0].clientX; }, { passive: true });
+      stage.addEventListener('touchend', (event) => {
+        if (startX === null) return;
+        const distance = event.changedTouches[0].clientX - startX;
+        startX = null;
+        if (Math.abs(distance) > 40) go(distance < 0 ? 1 : -1);
+      });
+    }
+
+    code.parentElement.replaceWith(carousel);
+    measure();
+  });
+}
+
+// Embeds (YouTube, Spotify, etc.): paste the provider's <iframe> code straight into the markdown.
+function setupEmbeds() {
+  content.querySelectorAll('iframe').forEach((frame) => {
+    frame.loading = 'lazy';
+    const width = frame.getAttribute('width');
+    const height = frame.getAttribute('height');
+    // Fixed-size embeds (like YouTube's 560x315) keep their proportions as the page narrows.
+    // Embeds with width="100%" (like Spotify) keep their set height.
+    if (/^\d+$/.test(width) && /^\d+$/.test(height)) {
+      frame.style.aspectRatio = `${width} / ${height}`;
+      frame.style.height = 'auto';
+    }
+  });
+}
+
 async function renderMarkdown() {
   const folder = (document.body.dataset.mdFolder || '/markdown').replace(/\/$/, '');
   const pageName = location.pathname.split('/').filter(Boolean).pop() || 'index';
@@ -373,6 +574,9 @@ async function renderMarkdown() {
     box.disabled = false;
   });
 
+  buildFigures();
+  setupEmbeds();
+  buildCarousels();
   buildNav();
   initFootnotes();
 

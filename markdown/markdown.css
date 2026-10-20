@@ -14,6 +14,12 @@
 }
 
 /* Headings */
+.md-content h1,
+.md-content h2,
+.md-content h3 {
+  scroll-margin-top: 24px;
+}
+
 .md-content h1 {
   margin: 0 0 30px;
   padding-bottom: 24px;
@@ -60,14 +66,16 @@
   text-decoration-color: var(--accent);
 }
 
-.md-content a {
+.md-content a,
+.fn-tooltip a {
   color: var(--ink);
   text-decoration-color: var(--accent);
   text-underline-offset: 3px;
   transition: color .2s;
 }
 
-.md-content a:hover {
+.md-content a:hover,
+.fn-tooltip a:hover {
   color: var(--accent);
 }
 
@@ -93,8 +101,8 @@
   color: var(--accent);
 }
 
-.md-content li > ul,
-.md-content li > ol {
+.md-content li>ul,
+.md-content li>ol {
   margin: .4rem 0 0;
 }
 
@@ -142,7 +150,8 @@
 }
 
 /* Code */
-.md-content code {
+.md-content code,
+.fn-tooltip code {
   padding: 1px 5px;
   border-radius: 2px;
   background: var(--accent-soft);
@@ -217,23 +226,6 @@ nav a.nav-h3 {
 nav a.nav-h2 span,
 nav a.nav-h3 span {
   width: 26px;
-}
-
-.md-content h1,
-.md-content h2,
-.md-content h3 {
-  scroll-margin-top: 24px;
-}
-
-@media (max-width: 700px) {
-  .md-page {
-    padding: 44px 0;
-  }
-
-  nav a.nav-h2,
-  nav a.nav-h3 {
-    padding-left: 8px;
-  }
 }
 
 /* Footnotes: ==highlighted text==[^id] with a matching [^id]: note */
@@ -311,23 +303,6 @@ nav a.nav-h3 span {
   font: 500 .62rem/1.3 var(--mono);
 }
 
-.fn-tooltip a {
-  color: var(--ink);
-  text-decoration-color: var(--accent);
-  text-underline-offset: 3px;
-}
-
-.fn-tooltip a:hover {
-  color: var(--accent);
-}
-
-.fn-tooltip code {
-  padding: 1px 4px;
-  border-radius: 2px;
-  background: var(--accent-soft);
-  font: 400 .85em var(--mono);
-}
-
 /* Note opened inline (small screens) */
 .fn-inline {
   display: none;
@@ -378,6 +353,15 @@ nav a.nav-h3 span {
 }
 
 @media (max-width: 700px) {
+  .md-page {
+    padding: 44px 0;
+  }
+
+  nav a.nav-h2,
+  nav a.nav-h3 {
+    padding-left: 8px;
+  }
+
   .fn-tooltip {
     display: none;
   }
@@ -405,4 +389,101 @@ nav a.nav-h3 span {
   .fn-inline.open a {
     color: var(--ink);
   }
+}
+
+/* Images and captions. Standalone images with a caption and carousel slides
+   share the same figure and caption styles. */
+.md-figure {
+  margin: 0 0 1.6rem;
+}
+
+.md-figure img,
+.md-content p > img:only-child {
+  display: block;
+  margin: 0 auto;
+}
+
+.md-caption {
+  margin: 0;
+  color: var(--muted);
+  font: 400 .85rem/1.5 var(--sans);
+  text-align: center;
+}
+
+/* Image carousel (```carousel code block) */
+.md-content .carousel {
+  margin: 0 0 1.6rem;
+}
+
+.carousel-stage {
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform .45s cubic-bezier(.4, 0, .2, 1);
+}
+
+.carousel-slide {
+  display: flex;
+  flex: 0 0 100%;
+  flex-direction: column;
+  min-width: 0;
+  margin: 0;
+}
+
+.carousel-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: var(--carousel-h, 200px);
+}
+
+.md-content .carousel-media img {
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.carousel-slide .md-caption {
+  min-height: var(--caption-h, 1.5em);
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 0;
+}
+
+.carousel-btn {
+  padding: 4px 6px;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color .15s;
+}
+
+.carousel-btn:hover,
+.carousel-btn:focus-visible {
+  color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track {
+    transition: none;
+  }
+}
+
+/* Embeds (iframes pasted from YouTube, Spotify, etc.) */
+.md-content iframe {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 0 1.6rem;
+  border: 0;
+  border-radius: 5px;
 }
