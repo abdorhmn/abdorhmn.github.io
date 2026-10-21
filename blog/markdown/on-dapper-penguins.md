@@ -43,7 +43,7 @@ In addition to things I’ve made I’d like to share an internet thing that I�
 Now, that’s all I got for you today, go enjoy yourself, and do something that makes the world a little bit better—alright? Good Bye!
 
 [^1]: Free and Open Source Software, it's really cool
-[^2]: Wine Is Not and Emulator
+[^2]: Wine Is Not an Emulator
 [^3]: The default desktop environment that Ubuntu comes installed with
 [^4]: Like four people at most, but well, that's a lot more people than the 0 that I'd known before
 [^5]: [There's a phrase for it](https://en.wikipedia.org/wiki/Enshittification)
