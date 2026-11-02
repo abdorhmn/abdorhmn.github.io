@@ -141,6 +141,19 @@ button {
   text-transform: uppercase;
 }
 
+.section-kicker .kicker-link {
+  margin-left: 16px;
+  color: var(--muted);
+  letter-spacing: normal;
+  text-transform: none;
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.section-kicker .kicker-link:hover {
+  color: var(--accent);
+}
+
 .name {
   display: inline-block;
   color: var(--ink);
@@ -1358,6 +1371,24 @@ body:has(.image-modal[open]) {
   /* When the last row has two posts, the left one loses its line too. */
   .blog-grid .post:nth-last-child(2):nth-child(odd) {
     border-bottom: 0;
+  }
+
+  .blog-grid .post {
+    position: relative;
+  }
+
+  .blog-grid .post:nth-child(odd)::after {
+    content: "";
+    position: absolute;
+    top: 16px;
+    right: 0;
+    bottom: 16px;
+    border-right: 1px solid var(--line);
+  }
+
+  /* No divider when the last post is alone in its row. */
+  .blog-grid .post:nth-child(odd):last-child::after {
+    display: none;
   }
 }
 
