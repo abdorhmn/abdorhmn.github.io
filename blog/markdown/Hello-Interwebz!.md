@@ -3,7 +3,7 @@ wow, this is the start of something.
 
 ---
 
-> Note for the reader: This post is cross posted from [my substack blog](https://curiabdosity.substack.com/p/on-dapper-penguins), future posts will be posted on both, this being the intended reading experience and substack used for emails and commenting.
+> Note for the reader: This post is cross posted from [my substack blog](https://curiabdosity.substack.com/p/hello-interwebz), future posts will be posted on both, this being the intended reading experience and substack used for emails and commenting.
 
 ```
 cout << "Hello Interwebz";
