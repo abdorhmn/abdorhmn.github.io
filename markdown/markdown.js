@@ -537,17 +537,18 @@ function setupEmbeds() {
 
 async function renderMarkdown() {
   const folder = (document.body.dataset.mdFolder || '/markdown').replace(/\/$/, '');
-  const pageName = location.pathname.split('/').filter(Boolean).pop() || 'index';
+  const pageName = decodeURIComponent(location.pathname.split('/').filter(Boolean).pop() || 'index');
   const name = (new URLSearchParams(location.search).get('file') || pageName).replace(/\.(html|md)$/i, '');
 
-  // Only plain file names: no slashes or dots, so it can't read outside the folder.
-  if (!/^[\w-]+$/.test(name)) {
-    content.textContent = `Can't use "${name}" as a markdown file name. Use letters, numbers, dashes, and underscores.`;
+  // Any characters are fine except slashes, control characters, and names made only of dots,
+  // so it can't read outside the folder.
+  if (!name || /[\/\\\x00-\x1f]/.test(name) || /^\.+$/.test(name)) {
+    content.textContent = `Can't use "${name}" as a markdown file name.`;
     return;
   }
 
   try {
-    const response = await fetch(`${folder}/${name}.md`);
+    const response = await fetch(`${folder}/${encodeURIComponent(name)}.md`);
     if (!response.ok) throw new Error(`Could not load ${folder}/${name}.md`);
     const { text, defs } = extractFootnotes(await response.text());
     footnoteState = { defs, order: [], refCounts: {}, inNote: false };

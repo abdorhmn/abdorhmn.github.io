@@ -1365,7 +1365,8 @@ body:has(.image-modal[open]) {
   }
 
   .blog-grid .post:nth-child(even):hover {
-    padding-left: 32px; /* keeps your home page's hover nudge */
+    padding-left: 32px;
+    /* keeps your home page's hover nudge */
   }
 
   /* When the last row has two posts, the left one loses its line too. */

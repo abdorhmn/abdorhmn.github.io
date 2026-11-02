@@ -1,9 +1,9 @@
-# on dapper penguins
-I don't use arch (btw) yet, don't worry // the year of the linux desktop
+# Hello Interwebz!
+wow, this is the start of something.
 
 ---
 
-> Note for the reader: This post is cross posted from [my substack blog](https://curiabdosity.substack.com/p/on-dapper-penguins?r=5avz2y&utm_campaign=post-expanded-share&utm_medium=web), future posts will be posted on both, this being the intended reading experience and substack used for emails and commenting.
+> Note for the reader: This post is cross posted from [my substack blog](https://curiabdosity.substack.com/p/on-dapper-penguins), future posts will be posted on both, this being the intended reading experience and substack used for emails and commenting.
 
 ```carousel
 ![ASCII Fedora Logo](https://substackcdn.com/image/fetch/$s_!TWfs!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2d0ed08d-c3a4-447a-be3b-310f5ba3dbe8_351x386.png "Pretend this looks like a fedora")

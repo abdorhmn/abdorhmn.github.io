@@ -233,7 +233,7 @@ function renderProjects(projects) {
     // const detailUrl = project.slug ? `${siteUrl('projects/')}#${project.slug}` : null;
     const detailUrl = null; // re-enable the line above when project writeups are ready
 
-        const visualWrap = document.createElement('div');
+    const visualWrap = document.createElement('div');
     visualWrap.className = 'project-visual-link';
 
     if (project.image) {
@@ -300,8 +300,8 @@ function renderWriting(posts) {
     anchor.className = 'post';
     anchor.href = post.url;
     if (/^https?:/.test(post.url)) {
-        anchor.target = '_blank';
-        anchor.rel = 'noopener';
+      anchor.target = '_blank';
+      anchor.rel = 'noopener';
     }
 
     const time = document.createElement('time');

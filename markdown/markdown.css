@@ -397,7 +397,7 @@ nav a.nav-h4 span {
 }
 
 .md-figure img,
-.md-content p > img:only-child {
+.md-content p>img:only-child {
   display: block;
   margin: 0 auto;
 }
