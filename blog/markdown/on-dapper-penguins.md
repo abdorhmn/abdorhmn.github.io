@@ -1,6 +1,8 @@
 # on dapper penguins
 I don't use arch (btw) yet, don't worry // the year of the linux desktop
 
+---
+
 > Note for the reader: This post is cross posted from [my substack blog](https://curiabdosity.substack.com/p/on-dapper-penguins?r=5avz2y&utm_campaign=post-expanded-share&utm_medium=web), future posts will be posted on both, this being the intended reading experience and substack used for emails and commenting.
 
 ```carousel

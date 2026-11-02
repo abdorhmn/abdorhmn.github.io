@@ -299,8 +299,10 @@ function renderWriting(posts) {
     const anchor = document.createElement('a');
     anchor.className = 'post';
     anchor.href = post.url;
-    anchor.target = '_blank';
-    anchor.rel = 'noopener';
+    if (/^https?:/.test(post.url)) {
+        anchor.target = '_blank';
+        anchor.rel = 'noopener';
+    }
 
     const time = document.createElement('time');
     time.dateTime = post.date;
@@ -315,7 +317,7 @@ function renderWriting(posts) {
 
     const arrow = document.createElement('b');
     arrow.setAttribute('aria-hidden', 'true');
-    arrow.append(makeIcon('arrow-up-right-from-square'));
+    arrow.append(makeIcon(/^https?:/.test(post.url) ? 'arrow-up-right-from-square' : 'arrow-right'));
 
     anchor.append(time, span, arrow);
     list.append(anchor);

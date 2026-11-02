@@ -1290,3 +1290,83 @@ footer>div {
 body:has(.image-modal[open]) {
   overflow: hidden;
 }
+
+/* Breadcrumbs (Home / Blog / Post) */
+.breadcrumbs {
+  margin: 0 0 28px;
+  font: 400 .72rem/1.4 var(--mono);
+}
+
+.breadcrumbs a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.breadcrumbs a:hover {
+  color: var(--accent);
+}
+
+.breadcrumbs .crumb-sep {
+  margin: 0 8px;
+  color: var(--accent);
+}
+
+.breadcrumbs [aria-current] {
+  color: var(--faint);
+}
+
+/* Blog page */
+.blog-title {
+  margin: 0 0 34px;
+  color: var(--ink);
+  font: 500 clamp(2.1rem, 5vw, 3.1rem)/1.08 var(--serif);
+  letter-spacing: -.02em;
+}
+
+.blog-section {
+  container-type: inline-size;
+  padding-bottom: 0;
+}
+
+/* No line under the last post; the section's own bottom border closes the list. */
+.blog-grid .post:last-child {
+  border-bottom: 0;
+}
+
+/* Two columns once the list is at least 640px wide; one column below that.
+   The columns touch, so each row's bottom line is one solid line. The space between
+   the two posts comes from extra padding on their inner sides (4px base + 20px). */
+@container (min-width: 640px) {
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .blog-grid .post:nth-child(odd) {
+    padding-right: 24px;
+  }
+
+  .blog-grid .post:nth-child(even) {
+    padding-left: 24px;
+  }
+
+  .blog-grid .post:nth-child(even):hover {
+    padding-left: 32px; /* keeps your home page's hover nudge */
+  }
+
+  /* When the last row has two posts, the left one loses its line too. */
+  .blog-grid .post:nth-last-child(2):nth-child(odd) {
+    border-bottom: 0;
+  }
+}
+
+/* Narrower date column so two posts fit side by side (phones keep the home layout). */
+@media (min-width: 701px) {
+  @container (min-width: 640px) {
+    .blog-grid .post {
+      grid-template-columns: 78px 1fr auto;
+      gap: 16px;
+    }
+  }
+}

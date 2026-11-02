@@ -561,6 +561,8 @@ async function renderMarkdown() {
 
   const title = content.querySelector('h1');
   if (title) document.title = `${title.textContent} | Abdelrahman Ahmed`;
+  const crumb = document.getElementById('md-crumb');
+  if (crumb && title) crumb.textContent = title.textContent;
 
   // Open outside links in a new tab.
   content.querySelectorAll('a[href]').forEach((link) => {

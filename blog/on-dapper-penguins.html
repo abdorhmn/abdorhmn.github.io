@@ -64,8 +64,15 @@
 
     <main id="main">
       <div class="md-page">
+        <div class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <a href="/blog/">Blog</a>
+        <span class="crumb-sep" aria-hidden="true">/</span>
+        <span id="md-crumb" aria-current="page"></span>
+      </div>
         <article class="md-content" id="md-content" aria-live="polite">Loading…</article>
-        <a class="detail-back-link" href="/index.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to home</a>
+        <a class="detail-back-link" href="/"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to home</a>
       </div>
       <footer>
         <p>Have a project, question, or especially good fun fact? <a href="mailto:abdrhmn@umich.edu">Contact me!</a></p>
