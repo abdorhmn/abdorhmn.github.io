@@ -1,5 +1,5 @@
-# Hello Interwebz!
-wow, this is the start of something.
+# on dapper penguins
+I don't use arch (btw) yet, don't worry // the year of the linux desktop
 
 ---
 
