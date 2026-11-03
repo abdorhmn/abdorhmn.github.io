@@ -141,8 +141,14 @@ button {
   text-transform: uppercase;
 }
 
+.section-kicker .kicker-label {
+  margin-right: 16px;
+}
+
+/* An inline block never splits across lines: it stays beside the label, or the whole link
+   moves down to start at the left edge underneath it. */
 .section-kicker .kicker-link {
-  margin-left: 16px;
+  display: inline-block;
   color: var(--muted);
   letter-spacing: normal;
   text-transform: none;

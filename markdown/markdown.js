@@ -537,7 +537,9 @@ function setupEmbeds() {
 
 async function renderMarkdown() {
   const folder = (document.body.dataset.mdFolder || '/markdown').replace(/\/$/, '');
-  const pageName = decodeURIComponent(location.pathname.split('/').filter(Boolean).pop() || 'index');
+  const parts = location.pathname.split('/').filter(Boolean);
+  if (/^index(\.html)?$/i.test(parts[parts.length - 1])) parts.pop(); // /projects/index.html counts as "projects"
+  const pageName = parts.pop() || 'index';
   const name = (new URLSearchParams(location.search).get('file') || pageName).replace(/\.(html|md)$/i, '');
 
   // Any characters are fine except slashes, control characters, and names made only of dots,
