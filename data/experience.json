@@ -9,7 +9,12 @@
       "Executed rigorous RF testing to ensure radio systems were competition-ready, analyzing data using MATLAB.",
       "Independently researched and designed a custom radio to replace our current off-the-shelf solution, self-teaching Altium Designer and Ansys HFSS"
     ],
-    "tags": ["RF systems", "MATLAB", "Altium", "HFSS"]
+    "tags": [
+      "RF systems",
+      "MATLAB",
+      "Altium",
+      "HFSS"
+    ]
   },
   {
     "role": "Student Manager & Tech Help Consultant",
@@ -22,7 +27,11 @@
       "Develop and design internal resources and tools using React to allow consultants to better serve customers with ease.",
       "Provide frontline technical support for the UofM community, resolving networking, software, and hardware problems."
     ],
-    "tags": ["Leadership", "React", "Technical support"]
+    "tags": [
+      "Leadership",
+      "React",
+      "Technical support"
+    ]
   },
   {
     "role": "System Lead · Electrical & Programming",
@@ -34,7 +43,12 @@
       "Led the design and implementation of the elevator and climber subsystems during the FIRST and OCCRA seasons, coordinating integration between mechanical, electrical, and software teams to build reliable automations for drivers.",
       "Designed schematics integrating sensors and motors, accounting for efficiency and maintenance during competition, and programmed robust autonomous and tele-operated robot functions in Java for more reliable scoring."
     ],
-    "tags": ["Java", "Robotics", "Electrical design", "CAD"]
+    "tags": [
+      "Java",
+      "Robotics",
+      "Electrical design",
+      "CAD"
+    ]
   },
   {
     "role": "Engineering Trainee",
@@ -46,6 +60,12 @@
       "Built a 360° RF Test Analyzer, automating the processing of 360° anechoic chamber VNA data in Python, organized by frequency and angle.",
       "Created a GUI that generates polar plots at each of 1601+ measured frequencies to inform engineering decisions."
     ],
-    "tags": ["VNA", "Python", "Pandas", "NumPy", "Data visualization"]
+    "tags": [
+      "VNA",
+      "Python",
+      "Pandas",
+      "NumPy",
+      "Data visualization"
+    ]
   }
 ]
