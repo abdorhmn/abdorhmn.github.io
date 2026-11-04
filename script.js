@@ -230,8 +230,7 @@ function renderProjects(projects) {
     const article = document.createElement('article');
     article.className = `project${project.featured ? ' project-featured' : ''}`;
 
-    // const detailUrl = project.slug ? `${siteUrl('projects/')}#${project.slug}` : null;
-    const detailUrl = null; // re-enable the line above when project writeups are ready
+    const detailUrl = project.slug ? `${siteUrl('projects/')}#${project.slug}` : null;
 
     const visualWrap = document.createElement('div');
     visualWrap.className = 'project-visual-link';
