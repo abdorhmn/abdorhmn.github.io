@@ -68,3 +68,6 @@ Throughout the class we built up the different pieces that finally allowed us to
 ![Image of Test Analyzer with polar plot at 2.300625GHz of frequency](/assets/images/rf-test-analyzer.png "Analyzer producing polar plot at a frequency of 2.300625GHz")
 
 This was a tool I built while shadowing at Denso International America.
+
+1. It automates the processing of 360° anechoic chambe readings from a vector network analyzer using python, organizing them by frequency and angle.
+2. Then creates the GUI to generate polar plots at each of the 1601+ (with a larger range of frequencies can have even more) measured frequencies to inform decisions.
