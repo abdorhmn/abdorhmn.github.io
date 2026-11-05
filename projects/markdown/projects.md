@@ -4,7 +4,7 @@ Here are the things I've worked on!
 
 ---
 
-If you prefer pdfs you can check out my formal [Samples of Work](/resume.pdf) document.
+If you prefer pdfs you can check out my formal [Samples of Work](./samples-of-work.pdf) document.
 
 ## Smart Sustainability Bat Box
 
