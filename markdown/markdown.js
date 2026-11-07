@@ -535,6 +535,151 @@ function setupEmbeds() {
   });
 }
 
+// PDF viewer: a ```pdf code block containing the path to a PDF.
+// Pages are drawn with pdf.js, which loads only on pages that have one.
+const PDFJS_URL = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
+let pdfJs;
+
+function loadPdfJs() {
+  pdfJs = pdfJs || new Promise((resolve, reject) => {
+    const script = document.createElement('script');
+    script.src = `${PDFJS_URL}pdf.min.js`;
+    script.onload = () => {
+      window.pdfjsLib.GlobalWorkerOptions.workerSrc = `${PDFJS_URL}pdf.worker.min.js`;
+      resolve(window.pdfjsLib);
+    };
+    script.onerror = reject;
+    document.head.append(script);
+  });
+  return pdfJs;
+}
+
+function buildPdfViewers() {
+  content.querySelectorAll('pre > code.language-pdf').forEach((code) => {
+    const url = code.textContent.trim();
+
+    const viewer = document.createElement('div');
+    viewer.className = 'pdf-viewer';
+    const stack = document.createElement('div');
+    stack.className = 'pdf-pages';
+    stack.tabIndex = 0;
+    stack.setAttribute('role', 'region');
+    stack.setAttribute('aria-label', 'PDF pages');
+
+    const controls = document.createElement('div');
+    controls.className = 'carousel-controls';
+    const prev = document.createElement('button');
+    const next = document.createElement('button');
+    [[prev, 'Previous page', 'arrow-up-long'], [next, 'Next page', 'arrow-down-long']].forEach(([button, label, icon]) => {
+      button.type = 'button';
+      button.className = 'carousel-btn';
+      button.setAttribute('aria-label', label);
+      button.append(makeIcon(icon));
+    });
+    const count = document.createElement('span');
+    count.className = 'pdf-count';
+    const download = document.createElement('a');
+    download.className = 'carousel-btn';
+    download.href = url;
+    download.download = '';
+    download.title = 'Download PDF';
+    download.setAttribute('aria-label', 'Download PDF');
+    download.append(makeIcon('download'));
+    controls.append(prev, count, next, download);
+
+    viewer.append(controls, stack);
+    code.parentElement.replaceWith(viewer);
+
+    loadPdfJs().then(async (pdfjsLib) => {
+      const doc = await pdfjsLib.getDocument(url).promise;
+      const pages = await Promise.all(Array.from({ length: doc.numPages }, (_, i) => doc.getPage(i + 1)));
+
+      // One frame per page, sized from the page's proportions so the layout doesn't jump.
+      const items = pages.map((page, index) => {
+        const base = page.getViewport({ scale: 1 });
+        const frame = document.createElement('div');
+        frame.className = 'pdf-page';
+        frame.style.setProperty('--ratio', base.width / base.height);
+        const canvas = document.createElement('canvas');
+        canvas.setAttribute('role', 'img');
+        canvas.setAttribute('aria-label', `Page ${index + 1} of ${doc.numPages}`);
+        frame.append(canvas);
+        stack.append(frame);
+        return { page, base, frame, canvas, task: null, drawnWidth: 0 };
+      });
+      const byFrame = new Map(items.map((item) => [item.frame, item]));
+
+      async function draw(item) {
+        const width = item.frame.clientWidth;
+        if (!width || item.drawnWidth === width) return;
+        item.drawnWidth = width;
+        const ratio = window.devicePixelRatio || 1;
+        const viewport = item.page.getViewport({ scale: (width / item.base.width) * ratio });
+        if (item.task) item.task.cancel();
+        item.canvas.width = Math.floor(viewport.width);
+        item.canvas.height = Math.floor(viewport.height);
+        item.task = item.page.render({ canvasContext: item.canvas.getContext('2d'), viewport });
+        try {
+          await item.task.promise;
+        } catch (error) {
+          if (error.name !== 'RenderingCancelledException') throw error;
+        }
+      }
+
+      // Only draw pages that are on screen or close to it.
+      const nearby = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) draw(byFrame.get(entry.target));
+        });
+      }, { root: stack, rootMargin: '800px 0px' });
+      items.forEach(({ frame }) => nearby.observe(frame));
+
+      // The page crossing the middle of the screen is the current one.
+      let number = 1;
+      function update() {
+        count.textContent = `${number} / ${doc.numPages}`;
+        prev.disabled = number === 1;
+        next.disabled = number === doc.numPages;
+      }
+      const middle = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          number = items.indexOf(byFrame.get(entry.target)) + 1;
+          update();
+        });
+      }, { root: stack, rootMargin: '-50% 0px -50% 0px' });
+      items.forEach(({ frame }) => middle.observe(frame));
+      update();
+
+      // The arrows jump to the previous or next page.
+      function go(step) {
+        const target = Math.min(Math.max(number - 1 + step, 0), items.length - 1);
+        stack.scrollTo({ top: items[target].frame.offsetTop - 12, behavior: 'smooth' });
+      }
+      prev.addEventListener('click', () => go(-1));
+      next.addEventListener('click', () => go(1));
+
+      // Hide the page controls for a one-page PDF; the download button stays.
+      if (doc.numPages === 1) [prev, next, count].forEach((el) => { el.hidden = true; });
+
+      // Redraw at the new size when the width changes.
+      let lastWidth = stack.clientWidth;
+      new ResizeObserver(() => {
+        if (stack.clientWidth === lastWidth) return;
+        lastWidth = stack.clientWidth;
+        items.forEach((item) => {
+          item.drawnWidth = 0;
+          nearby.unobserve(item.frame);
+          nearby.observe(item.frame);
+        });
+      }).observe(stack);
+    }).catch((error) => {
+      console.error(error);
+      stack.textContent = "Couldn't load the PDF.";
+    });
+  });
+}
+
 async function renderMarkdown() {
   const folder = (document.body.dataset.mdFolder || '/markdown').replace(/\/$/, '');
   const parts = location.pathname.split('/').filter(Boolean);
@@ -583,6 +728,7 @@ async function renderMarkdown() {
   buildFigures();
   setupEmbeds();
   buildCarousels();
+  buildPdfViewers();
   buildNav();
   initFootnotes();
 

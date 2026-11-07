@@ -486,3 +486,58 @@ nav a.nav-h4 span {
   border: 0;
   border-radius: 5px;
 }
+
+/* PDF viewer (```pdf code block). Reuses the carousel's arrow controls. */
+.pdf-viewer {
+  margin: 0 0 1.6rem;
+}
+
+.pdf-pages {
+  position: relative; /* lets the arrows measure each page's position inside the box */
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  --pdf-h: 80vh;
+  height: var(--pdf-h);
+  scroll-snap-type: y proximity;
+  scroll-padding-top: 12px;
+  margin-top: 8px;
+  padding: 12px;
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: var(--surface);
+}
+
+.pdf-page {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  background: #fff;
+  scroll-margin-top: 24px;
+  flex: none;
+  width: min(100%, calc((var(--pdf-h) - 26px) * var(--ratio)));
+  margin: 0 auto;
+  aspect-ratio: var(--ratio);
+  scroll-snap-align: start;
+}
+
+.pdf-page canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.pdf-count {
+  align-self: center;
+  color: var(--muted);
+  font: 400 .72rem var(--mono);
+}
+
+.pdf-viewer a.carousel-btn {
+  text-decoration: none;
+}
+
+.carousel-btn:disabled {
+  opacity: .3;
+  pointer-events: none;
+}
